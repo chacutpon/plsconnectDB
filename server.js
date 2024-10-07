@@ -10,11 +10,11 @@ const { readdirSync } = require('fs')
 
 //DatabaseMongo
 const connectToDB = require('./config/db')
-const { credential } = require('firebase-admin')
 connectToDB()
 
 //app
 const app = express();
+
 
 //middleware
 app.use(morgan("dev")) //คือบอกว่ามีการrequestมาจะแจ้งเตือนในฝั่งหลังบ้าน
