@@ -2,6 +2,8 @@
 
 const Users =require('../models/Users')
 
+
+
 exports.createAndUpdateUser = async (req, res) => {
     try {
         const { name, email } = req.user;
@@ -14,9 +16,15 @@ exports.createAndUpdateUser = async (req, res) => {
         let role = 'user'; 
 
         // ตรวจสอบว่าอีเมลลงท้ายด้วย @kmutnb.ac.th หรือ @sci.kmutnb.ac.th หรือไม่
-        const teacherEmailRegex = /^[^\s@]+@(kmutnb\.ac\.th|sci\.kmutnb\.ac\.th|email\.kmutnb\.ac\.th)$/;
-        if (teacherEmailRegex.test(email)) {
+        const teacherEmailRegex = /^[^\s@]+@(kmutnb\.ac\.th|sci\.kmutnb\.ac\.th)$/;
+        if (teacherEmailRegex.test(email) || email === "dabc75880@gmail.com") {
             role = 'teacher'; 
+        }
+
+        // ถ้าอีเมลเป็น ilovebabymonster744@gmail.com ให้ตั้งเป็น admin
+        const adminEmail = "ilovebabymonster744@gmail.com";
+        if (email === adminEmail) {
+            role = 'admin'; 
         }
 
         const user = await Users.findOneAndUpdate(

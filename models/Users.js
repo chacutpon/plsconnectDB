@@ -14,4 +14,5 @@ const userSchema = mongoose.Schema({
    
 },{timestamps: true}) //จะโชว์ created,updated
 
+
 module.exports = mongoose.model('Users',userSchema) //(ชื่อโมเดล,schema)
