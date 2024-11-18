@@ -7,7 +7,6 @@ const Users =require('../models/Users')
 exports.createAndUpdateUser = async (req, res) => {
     try {
         const { name, email } = req.user;
-
         // ตรวจสอบข้อมูล
         if (!name || !email) {
             return res.status(400).json({ message: "Missing name or email" });
@@ -15,7 +14,7 @@ exports.createAndUpdateUser = async (req, res) => {
 
         let role = 'user'; 
 
-        // ตรวจสอบว่าอีเมลลงท้ายด้วย @kmutnb.ac.th หรือ @sci.kmutnb.ac.th หรือไม่
+        //check ใครเป็นอาจาร
         const teacherEmailRegex = /^[^\s@]+@(kmutnb\.ac\.th|sci\.kmutnb\.ac\.th)$/;
         if (teacherEmailRegex.test(email) || email === "dabc75880@gmail.com") {
             role = 'teacher'; 
