@@ -16,7 +16,8 @@ exports.createAndUpdateUser = async (req, res) => {
 
         //check ใครเป็นอาจาร
         const teacherEmailRegex = /^[^\s@]+@(kmutnb\.ac\.th|sci\.kmutnb\.ac\.th)$/;
-        if (teacherEmailRegex.test(email) || email === "dabc75880@gmail.com") {
+        const addTeacherEmails = ["dabc75880@gmail.com", "teacherusertest1@gmail.com"]; 
+        if (teacherEmailRegex.test(email) || addTeacherEmails.includes(email)) {
             role = 'teacher'; 
         }
 
